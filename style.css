@@ -1,0 +1,216 @@
+/* Aplica una transición suave a todos los elementos durante 1 segundo */
+* {
+  transition: all 1s;
+  box-sizing: border-box; /* Asegura que los bordes y el padding no aumenten el tamaño total del elemento */
+}
+
+/* Estilos globales para el cuerpo de la página */
+body {
+  text-align: center; /* Centra el texto horizontalmente */
+  font-family: arial; /* Fuente para todo el cuerpo */
+  margin: 0; /* Elimina márgenes por defecto */
+  padding: 0; /* Elimina relleno por defecto */
+  user-select: none; /* Desactiva la selección de texto */
+  background: url(img/fondo.png) no-repeat center center fixed; /* Fondo fijo*/
+  background-size: cover; /* Hace que la imagen de fondo cubra toda la pantalla */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 80vh; /* Asegura que el contenido se centre verticalmente */
+}
+
+/* Contenedor */
+.container {
+  background: #578A34; /* Color de fondo */
+  margin: 0 auto; /* Centrado horizontalmente */
+  padding: 15px; /* Espaciado interno */
+  text-align: center; /* Centra el texto */
+  display: flex; /* Utiliza Flexbox para organizar los elementos dentro */
+  justify-content: space-between; /* Coloca los elementos a los extremos */
+  align-items: center; /* Alinea los elementos verticalmente al centro */
+  width: 41.5%; /* Adapta el ancho al contenido */
+}
+
+/* Contenedor de las minas (icono y número) */
+.container-minas {
+  display: flex; /* Utiliza Flexbox para alinear los elementos horizontalmente */
+  align-items: center; /* Alinea verticalmente al centro */
+}
+
+/* Estilo de la bandera */
+#bandera {
+  margin-right: 5px; /* Espacio entre la bandera y el número de minas */
+  color: red; /* Color de la bandera */
+}
+
+/* Estilo para el número de minas restantes */
+#minas,
+#contador {
+  font-size: 20px; /* Tamaño de fuente para el contador de minas */
+}
+
+/* Estilo para el icono de ajustes (engranaje) */
+#Ajustes {
+  cursor: pointer; /* Cambia el cursor a mano al pasar sobre el icono */
+  font-size: 20px; /* Tamaño de la fuente */
+}
+
+/* Estilos para la tabla del juego */
+table {
+  background: #AAD751; /* Color de fondo de la tabla */
+  margin: 0 auto; /* Centrado horizontal de la tabla */
+  border-collapse: collapse; /* Elimina bordes internos de las celdas */
+  width: 100%; /* Tamaño dinámico que puede cambiar */
+  background-color: #AAD751;
+}
+
+/* Estilo para separar el contenedor del tablero de juego */
+.container + table {
+  margin-top: 0; /* Sin margen entre el contenedor y la tabla */
+}
+
+/* Estilo para los botones de juego y ajustes */
+#juego-nuevo,
+#Ajustes {
+  box-shadow: inset 2px 2px 0 0 rgba(255, 255, 255, 0.5),
+              inset -2px -2px 0 0 rgba(0, 0, 0, 0.5); /* Sombra interna */
+  padding: 10px; /* Espaciado interno */
+  margin: 10px; /* Espaciado externo */
+  cursor: pointer; /* Cambia el cursor a mano al pasar sobre los botones */
+}
+
+/* Estilo para el botón de juego nuevo */
+#juego-nuevo {
+  background: white;
+}
+
+/* Estilo para el botón de ajustes */
+#Ajustes {
+  background: #eee; /* Fondo gris claro */
+}
+
+/* Color para el número de minas */
+#minas,
+#contador {
+  color: white; /* Color blanco para el número de minas */
+}
+
+/* Estilos para las celdas del tablero */
+td {
+  border: rgba(0, 0, 0, 0.25) 1px solid; /* Borde sutil de las celdas */
+  text-align: center; /* Centra el contenido en las celdas */
+  font-size: 120%; /* Aumenta el tamaño de la fuente */
+  color: white; /* Color de texto blanco */
+  box-shadow: inset 0.5px 0.5px 0 0 rgba(255, 255, 255, 0.5),
+              inset -0.5px -0.5px 0 0 rgba(0, 0, 0, 0.5); /* Sombra interna */
+}
+
+/* Estilo para alternar colores en las celdas */
+tr:nth-child(even) td:nth-child(odd),
+tr:nth-child(odd) td:nth-child(even) {
+  background-color: #BFE17D; /* Color gris claro para celdas alternas */
+}
+
+tr:nth-child(even) td:nth-child(even),
+tr:nth-child(odd) td:nth-child(odd) {
+  background-color: #A2D149; /* Color verde claro para celdas alternas */
+}
+
+/* Estilo de transición para minas ganadoras (verde) */
+.mina-verde {
+  color: green; /* Color verde para minas ganadoras */
+  transition: color 1s ease-in-out; /* Transición suave de color */
+}
+
+/* Estilo de transición para minas perdedoras (roja) */
+.mina-roja {
+  color: red; /* Color rojo para minas perdedoras */
+  transition: color 1s ease-in-out; /* Transición suave de color */
+}
+
+/* Estado final de las minas: negro (cuando el juego termina) */
+.mina-negra {
+  color: black; /* Color negro para minas finales */
+}
+
+#temporizador-container {
+  font-size: 20px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+}
+
+#temporizador-container i {
+  margin-right: 8px; /* Espacio entre el icono y el contador */
+}
+
+
+/* Responsivo para pantallas pequeñas */
+@media (max-width: 940px) {
+
+  /* Estilo para ocultar el fondo y elementos innecesarios */
+  body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh; /* Asegura que el contenido se centre verticalmente */
+      margin: 0 auto;
+  }
+
+  /* Ajuste del contenedor principal */
+  .container {
+    margin: 0 auto;
+      width: 100%; /* Se adapta al tamaño de la pantalla */
+      padding: 15px;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Añade un pequeño borde sombreado */
+  }
+
+  /* Ajuste del contenedor de la tabla */
+  .table {
+    margin: 0 auto;
+      width: 100%; /* La tabla ocupa todo el ancho disponible */
+      padding: 10px;
+  }
+
+}
+
+/*
+@media screen and (max-width: 768px) {
+  body {
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center; 
+    min-height: 100vh; 
+    margin: 0; 
+    padding: 0;
+  }
+
+  .container {
+    width: 90%; 
+    padding: 20px;
+    text-align: center; 
+  }
+
+
+  table {
+    width: 100%; 
+    margin: 20px 0;
+  }
+
+
+  #temporizador-container {
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+
+  #juego-nuevo,
+  #Ajustes {
+    width: 80%; 
+    text-align: center; 
+    margin: 10px auto; 
+  }
+}*/

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8"> <!-- Definirá la codificación de caracteres -->
+    <title>Buscaminas</title>
+
+    <!-- Enlace a la biblioteca de íconos Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <!-- Enlace a la hoja de estilos -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Archivo de JavaScript con lógica del juego -->
+    <script src="script.js" defer></script>
+
+    <!-- Biblioteca externa SweetAlert2 para todo tipo de alertas que agregue a JavaScript-->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.15.7/dist/sweetalert2.all.min.js"></script>
+
+    <!-- Ícono de la página en la pestaña del navegador -->
+    <link rel="shortcut icon" href="img/pngwing.com.png">
+</head>
+
+<body oncontextmenu="return false"> <!-- Desactiva el clic derecho en toda la página -->
+    <br>
+    <div class="container-principal"> <!-- Contenedor principal del juego -->
+        <div class="container"> <!-- Contenedor de la barra superior del juego -->
+            <!-- Botón para iniciar un nuevo juego -->
+            <span id="juego-nuevo" onclick="nuevoJuego()">
+                Juego Nuevo
+            </span>
+
+            <!-- Contenedor para mostrar el número de minas y el ícono de bandera -->
+            <div class="container-minas">
+                <!-- Ícono de bandera -->
+                <span id="bandera" class="icon">
+                    <i class="fas fa-flag"></i> <!-- Ícono bandera de Font Awesome -->
+                </span>
+                <!-- Contador de minas restantes -->
+                <span id="minas">000</span>
+            </div>
+
+            <!-- Icono de reloj junto al contador -->
+            <div id="temporizador-container">
+                <i class="fas fa-clock"></i> <!-- Icono de reloj -->
+                <span id="contador">0 s</span> <!-- Contador de tiempo -->
+            </div>
+
+            <!-- Botón de ajustes -->
+            <span id="Ajustes" onclick="ajustes()">
+                <i class="fas fa-cog"></i> <!-- Ícono para la opción de configuración -->
+            </span>
+        </div>
+
+        <!-- Tablero del juego -->
+        <table cellspacing="0" cellpadding="0" id="tablero">
+            <!-- Este espacio se llenará de manera dinámica en JavaScript -->
+        </table>
+    </div>
+</body>
+
+</html>
